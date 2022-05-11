@@ -6,6 +6,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include<stdio.h>
+#include <ctype.h>
 
 extern int value;
 
@@ -41,6 +42,7 @@ typedef struct instruction_s
 
 void readFile(char* name);
 void search(char *mainToken, stack_t **stack, unsigned int line_number);
+int is_number(char *data);
 
 void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
