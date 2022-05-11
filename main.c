@@ -51,7 +51,7 @@ void readFile(char* name)
 
 	while ((getline(&line, &t, file) != -1))
 	{
-		mainToken = strtok(line, " ");
+		mainToken = strtok(line, " \n\t");
 		search(mainToken, &stack, line_number);
 		line_number++;
 	}

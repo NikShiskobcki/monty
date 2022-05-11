@@ -30,6 +30,6 @@ void _pall(stack_t **stack, unsigned int line_number)
 	while (nodo)
 	{
 		printf("%d\n", nodo->n);
-		nodo = nodo->prev;
+		nodo = nodo->next;
 	}
 }
