@@ -38,7 +38,10 @@ typedef struct instruction_s
 
 void readFile(char* name);
 void verify(char*line, int line_number);
+instruction_t find_function(char *str);
 
+void _push(void);
+void _pall(void);
 
 
 
