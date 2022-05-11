@@ -9,14 +9,15 @@ void verify(char *line, int line_number)
 {
 	char *tokencitoMain;
 	char *tokencitoDato;
+	instruction_t function;
 	tokencitoMain = strtok(line, " ");
 
+	function = find_function(tokencitoMain);
 
-	tokencitoDato = strtok(NULL, " ");
 	
-	printf("main: %s\n", tokencitoMain);
-	printf("dato: %s\n", tokencitoDato);
-	printf("%i\n", line_number);
+
+	//tokencitoDato = strtok(NULL, " ");
+	
 
 }
 
@@ -29,7 +30,8 @@ void readFile(char* name)
 	char *line;
 	int line_number = 1;
 	size_t t = 0;
-
+	stack_t *stack = NULL;
+	
 	file = fopen(name, "r");
 
 	while ((getline(&line, &t, file) != -1))
