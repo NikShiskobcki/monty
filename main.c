@@ -1,25 +1,40 @@
-#include "main.h"
+#include "monty.h"
 
 /**
- * verify - tokenizes, calls function
- * @line: line from file
- * @line_number: line number
+ *
+ *
  */
-void verify(char *line, int line_number)
+void search(char *mainToken, stack_t **stack, unsigned int line_number)
 {
-	char *tokencitoMain;
-	char *tokencitoDato;
-	instruction_t function;
-	tokencitoMain = strtok(line, " ");
+	int j = 0;
 
-	function = find_function(tokencitoMain);
+	instruction_t func[] = {
+		{"push", _push},
+		{"pall", _pall},
+		{NULL, NULL}
+	};
 
+	while (func[j].opcode != NULL)
+	{
+		if (strcmp(func[j].opcode, mainToken) == 0)
+		{
+			func[j].f(stack, line_number);
+			break;
+		}
+		j++;
+		
+	}	
+	if (func[j].opcode == NULL)
+	{
+		fprintf(stderr, "L%i: unknown instruction %s\n", line_number, mainToken);
+		exit(EXIT_FAILURE);
+	}	
 	
-
-	//tokencitoDato = strtok(NULL, " ");
 	
 
 }
+
+
 
 /** readFile -  opens and reads file
  * @name: argv[1]
@@ -27,17 +42,18 @@ void verify(char *line, int line_number)
 void readFile(char* name)
 {
 	FILE *file;
-	char *line;
-	int line_number = 1;
+	char *line, *mainToken;
+	unsigned int line_number = 1;
 	size_t t = 0;
 	stack_t *stack = NULL;
-	
+
 	file = fopen(name, "r");
 
 	while ((getline(&line, &t, file) != -1))
 	{
-			verify(line, line_number);
-			line_number++;
+		mainToken = strtok(line, " ");
+		search(mainToken, &stack, line_number);
+		line_number++;
 	}
 }
 
