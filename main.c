@@ -107,7 +107,10 @@ void readFile(char *name)
 	{
 		mainToken = strtok(line, " \n\t");
 		if (mainToken != NULL)
-			search(mainToken, &stack, line_number);
+		{
+			if (mainToken[0] != '#')
+				search(mainToken, &stack, line_number);
+		}
 		line_number++;
 	}
 
