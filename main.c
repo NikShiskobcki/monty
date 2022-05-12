@@ -1,6 +1,23 @@
 #include "monty.h"
 
 /**
+ *frstack - frees stack
+ *@stack: stack
+ */
+void frStack(stack_t **stack)
+{
+	stack_t *aux, *ptr;
+
+	aux = *stack;
+	while (aux)
+	{
+		ptr = aux->next;
+		free(aux);
+		aux = ptr;
+	}
+}
+
+/**
  *is_number - checks if number
  *@data: input
  * Return: 0 if num
