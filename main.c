@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- *frstack - frees stack
+ *frStack - frees stack
  *@stack: stack
  */
 void frStack(stack_t **stack)
@@ -68,7 +68,7 @@ void search(char *mainToken, stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%i: unknown instruction %s\n", line_number, mainToken);
 		free(mainToken);
-		free(*stack);
+		frStack(stack);
 		exit(EXIT_FAILURE);
 	}
 }
