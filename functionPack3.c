@@ -76,7 +76,7 @@ void _mod(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	if (aux->n == 0)
+	if (aux1->n == 0)
 	{
 		fprintf(stderr, "L%i: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
