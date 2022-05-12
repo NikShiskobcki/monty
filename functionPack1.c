@@ -60,3 +60,20 @@ void _pall(stack_t **stack, unsigned int line_number)
 		nodo = nodo->next;
 	}
 }
+
+/**
+ *_pint- prints first item
+ *@stack: stack
+ *@line_number: line number
+ */
+
+void _pint(stack_t **stack, unsigned int line_number)
+{
+	if (!*stack)
+	{
+		fprintf(stderr, "L%i: can't pint, stack empty\n", line_number);
+		free(stack);
+		exit(EXIT_FAILURE);
+	}
+	printf("%i\n", (*stack)->n);
+}
