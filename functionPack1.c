@@ -3,7 +3,8 @@ int value;
 void _push(stack_t **stack, unsigned int line_number)
 {
 	char *data;
-	stack_t *new;
+	stack_t *new, *aux;
+
 	
 	line_number = line_number;
 	
@@ -14,6 +15,17 @@ void _push(stack_t **stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%i: usage: push integer\n", line_number);
+		if ((*stack) != NULL)
+		{
+			while (*stack)
+			{
+				aux = (*stack);
+				(*stack) = (*stack)->next;
+				free(aux);
+			}
+
+		}
+		free(*stack);
 		exit(EXIT_FAILURE);
 	}
 

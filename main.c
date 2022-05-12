@@ -51,6 +51,8 @@ void search(char *mainToken, stack_t **stack, unsigned int line_number)
 	if (func[j].opcode == NULL)
 	{
 		fprintf(stderr, "L%i: unknown instruction %s\n", line_number, mainToken);
+		free(mainToken);
+		free(*stack);
 		exit(EXIT_FAILURE);
 	}	
 	
@@ -69,7 +71,7 @@ void readFile(char* name)
 	char *line, *mainToken;
 	unsigned int line_number = 1;
 	size_t t = 0;
-	stack_t *stack = NULL;
+	stack_t *stack = NULL, *aux;
 
 	file = fopen(name, "r");
 
@@ -80,6 +82,19 @@ void readFile(char* name)
 			search(mainToken, &stack, line_number);
 		line_number++;
 	}
+
+	if (stack != NULL)
+	{
+		while (stack)
+		{
+			aux = stack;
+			stack = stack->next;
+			free(aux);
+		}
+	}
+	
+	free(line);
+	fclose(file);
 }
 
 /**
