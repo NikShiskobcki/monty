@@ -8,7 +8,7 @@ int value;
 void _push(stack_t **stack, unsigned int line_number)
 {
 	char *data;
-	stack_t *new, *aux;
+	stack_t *new;
 
 	line_number = line_number;
 	data = strtok(NULL, " \n\t");
