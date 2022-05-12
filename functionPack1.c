@@ -1,16 +1,18 @@
 #include "monty.h"
 int value;
+/**
+ *_push - pushes
+ *@stack: stack
+ *@line_number: line number
+ */
 void _push(stack_t **stack, unsigned int line_number)
 {
 	char *data;
 	stack_t *new, *aux;
 
-	
 	line_number = line_number;
-	
 	data = strtok(NULL, " \n\t");
-
-	if (data != NULL && is_number(data) == 0)	
+	if (data != NULL && is_number(data) == 0)
 		value = atoi(data);
 	else
 	{
@@ -23,13 +25,10 @@ void _push(stack_t **stack, unsigned int line_number)
 				(*stack) = (*stack)->next;
 				free(aux);
 			}
-
 		}
 		free(*stack);
 		exit(EXIT_FAILURE);
 	}
-
-
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
@@ -45,9 +44,14 @@ void _push(stack_t **stack, unsigned int line_number)
 	*stack = new;
 }
 
+/**
+ *_pall- prints all
+ *@stack: stack
+ *@line_number: line number
+ */
 void _pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *nodo= *stack;
+	stack_t *nodo = *stack;
 
 	line_number = line_number;
 	while (nodo)
