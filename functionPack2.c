@@ -35,7 +35,7 @@ void _add(stack_t **stack, unsigned int line_number)
 	stack_t *aux1 = NULL, *aux2 = NULL;
 
 	aux1 = *stack;
-	if(aux1)
+	if (aux1)
 		aux2 = aux1->next;
 
 	if (aux1 == NULL || aux2 == NULL)
