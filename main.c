@@ -1,12 +1,9 @@
 #include "monty.h"
 
-
 /**
- *
- *
- *
- *
- *
+ *is_number - checks if number
+ *@data: input
+ * Return: 0 if num
  */
 int is_number(char *data)
 {
@@ -25,8 +22,10 @@ int is_number(char *data)
 }
 
 /**
- *
- *
+ *search - searches function and runs it
+ *@mainToken: main token
+ *@stack: stack
+ *@line_number: line number
  */
 void search(char *mainToken, stack_t **stack, unsigned int line_number)
 {
@@ -46,26 +45,23 @@ void search(char *mainToken, stack_t **stack, unsigned int line_number)
 			break;
 		}
 		j++;
-		
-	}	
+	}
 	if (func[j].opcode == NULL)
 	{
 		fprintf(stderr, "L%i: unknown instruction %s\n", line_number, mainToken);
 		free(mainToken);
 		free(*stack);
 		exit(EXIT_FAILURE);
-	}	
-	
-	
-
+	}
 }
 
 
 
-/** readFile -  opens and reads file
+/**
+ * readFile -  opens and reads file
  * @name: argv[1]
  */
-void readFile(char* name)
+void readFile(char *name)
 {
 	FILE *file;
 	char *line, *mainToken;
@@ -92,7 +88,7 @@ void readFile(char* name)
 			free(aux);
 		}
 	}
-	
+
 	free(line);
 	fclose(file);
 }
@@ -125,5 +121,5 @@ int main(int argc, char **argv)
 	if (file)
 		fclose(file);
 	readFile(argv[1]);
-	return(0);
+	return (0);
 }
