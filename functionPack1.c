@@ -12,8 +12,10 @@ void _push(stack_t **stack, unsigned int line_number)
 
 	line_number = line_number;
 	data = strtok(NULL, " \n\t");
-	if (data != NULL && is_number(data) == 0)
+	if (data != NULL && is_number(data) != 1)
+	{
 		value = atoi(data);
+	}
 	else
 	{
 		fprintf(stderr, "L%i: usage: push integer\n", line_number);
