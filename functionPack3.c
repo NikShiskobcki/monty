@@ -15,7 +15,12 @@ void _div(stack_t **stack, unsigned int line_number)
 
 	if (aux1 == NULL || aux2 == NULL)
 	{
-		fprintf(stderr, "L%i: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%i: can't div, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (aux1->n == 0)
+	{
+		fprintf(stderr, "L%i: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -41,7 +46,7 @@ void _mul(stack_t **stack, unsigned int line_number)
 
 	if (aux1 == NULL || aux2 == NULL)
 	{
-		fprintf(stderr, "L%i: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%i: can't mul, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -67,7 +72,13 @@ void _mod(stack_t **stack, unsigned int line_number)
 
 	if (aux1 == NULL || aux2 == NULL)
 	{
-		fprintf(stderr, "L%i: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%i: can't mod, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	if (aux->n == 0)
+	{
+		fprintf(stderr, "L%i: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
