@@ -76,7 +76,7 @@ void _pint(stack_t **stack, unsigned int line_number)
  * _pop- removes first item
  * @stack: stack
  * @line_number: line number
- * */
+ */
 void _pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new = *stack;
