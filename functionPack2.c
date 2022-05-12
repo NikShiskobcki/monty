@@ -60,3 +60,29 @@ void _nop(stack_t **stack, unsigned int line_number)
 	stack = stack;
 	line_number = line_number;
 }
+
+/**
+ *_sub - substracts
+ *@stack: stack
+ *@line_number
+ */
+void _sub(stack_t **stack, unsigned int line_number)
+{
+	stack_t *aux1 = NULL, *aux2 = NULL;
+
+	aux1 = *stack;
+	if (aux1)
+		aux2 = aux1->next;
+
+	if (aux1 == NULL || aux2 == NULL)
+	{
+		fprintf(stderr, "L%i: can't sub, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	aux2->n = aux2->n - aux1->n;
+	free(aux1);
+	aux2->prev = NULL;
+	*stack = aux2;
+}
+
