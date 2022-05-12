@@ -26,7 +26,7 @@ int is_number(char *data)
 {
 	int i = 0;
 	int flag = 0;
-	
+
 	if (data[0] == '-')
 	{
 		flag = 0;
